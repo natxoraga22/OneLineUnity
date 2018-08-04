@@ -449,6 +449,8 @@ MonoBehaviour:
   mainCamera: {fileID: 34513001}
   playerController: {fileID: 2122567981}
   wallSpawner: {fileID: 569715906}
+  rightLimit: {fileID: 249618058}
+  leftLimit: {fileID: 1997238613}
 --- !u!4 &748088764
 Transform:
   m_ObjectHideFlags: 0
