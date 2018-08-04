@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour {
 	public static GameController current;		//a reference to our game controller so we can access it statically
 
 	// Game components
-	public GUIText scoreText;
+	public Text scoreText;
 	public Button playPauseButton;
 	public Camera mainCamera;
 	public PlayerController playerController;	

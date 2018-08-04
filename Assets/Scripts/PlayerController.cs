@@ -55,21 +55,23 @@ public class PlayerController : MonoBehaviour {
 		currentSpeed += speedIncrement;
 	}
 
-	void OnCollisionEnter2D(Collision2D other)
-	{
-		isDead = true;
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Wall") {
+            isDead = true;
 
-		// Stop the player
-		rigidBody.velocity = new Vector2 (0f, 0f);
+            // Stop the player
+            rigidBody.velocity = new Vector2(0f, 0f);
 
-		// Paint player and collider wall red
-		if (currentColor == Color.white) spriteRenderer.sprite = redBlackSprite;
-		else if (currentColor == Color.black) spriteRenderer.sprite = redWhiteSprite;
-		trailRenderer.material.color = Color.red;
-		SpriteRenderer wallSpriteRenderer = other.gameObject.GetComponent<SpriteRenderer> ();
-		wallSpriteRenderer.color = Color.red;
+            // Paint player and collider wall red
+            if (currentColor == Color.white) spriteRenderer.sprite = redBlackSprite;
+            else if (currentColor == Color.black) spriteRenderer.sprite = redWhiteSprite;
+            trailRenderer.material.color = Color.red;
+            SpriteRenderer wallSpriteRenderer = other.gameObject.GetComponent<SpriteRenderer>();
+            wallSpriteRenderer.color = Color.red;
 
-		// Tell the game controller game is over
-		GameController.current.PlayerDied ();
+            // Tell the game controller game is over
+            GameController.current.PlayerDied();
+        }
 	}
 }
