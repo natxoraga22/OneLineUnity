@@ -12,7 +12,9 @@ public class GameController : MonoBehaviour {
 	public Button playPauseButton;
 	public Camera mainCamera;
 	public PlayerController playerController;	
-	public WallSpawner wallSpawner;				
+	public WallSpawner wallSpawner;
+    public GameObject rightLimit;
+    public GameObject leftLimit;
 
 	private Color currentElementsColor = Color.white;
 	private Color currentBackgroundColor = Color.black;
@@ -28,7 +30,16 @@ public class GameController : MonoBehaviour {
 		else if (current != this) Destroy (gameObject);
 	}
 
-	public int GetScore()
+    private void Start()
+    {
+        //position right and left limits depending on screen width
+        float screenMinX = mainCamera.ScreenToWorldPoint(new Vector3(0f, 0f, 0f)).x;
+        float screenMaxX = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, 0f, 0f)).x;
+        leftLimit.transform.position = new Vector3(screenMinX - leftLimit.GetComponent<BoxCollider2D>().size.x / 2f, leftLimit.transform.position.y, leftLimit.transform.position.z);
+        rightLimit.transform.position = new Vector3(screenMaxX + rightLimit.GetComponent<BoxCollider2D>().size.x / 2f, rightLimit.transform.position.y, rightLimit.transform.position.z);
+    }
+
+    public int GetScore()
 	{
 		return score;
 	}
