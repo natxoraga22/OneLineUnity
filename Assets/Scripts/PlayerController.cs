@@ -16,9 +16,9 @@ public class PlayerController : MonoBehaviour {
 	public Sprite redBlackSprite;
 
 	// Speed
-	public float initialSpeed = 4f;
-	public float speedIncrement = 0.1f;
-	public float maxSpeed = 6f;
+	public float initialSpeed = 3.5f;
+	public float speedIncrement = 0.05f;
+	public float maxSpeed = 6.5f;
 	private float currentSpeed;
 
 	private bool isDead = false;

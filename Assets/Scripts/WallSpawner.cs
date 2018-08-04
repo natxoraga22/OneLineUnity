@@ -5,12 +5,16 @@ public class WallSpawner : MonoBehaviour {
 
 	public GameObject wallPrefab;		//the wall game object
 	public int wallPoolSize = 5;		//how many walls to keep on standby
-	public float spawnRate = 1.5f;		//how quickly walls spawn
-	public float wallMinX = -1.5f;		//minimum x value of the wall position
-	public float wallMaxX = 1.5f;		//maximum x value of the wall position
+    public float minSpawnRate = 1f;     //minimum value for how quickly walls spawn
+    public float maxSpawnRate = 1.5f;   //maximum value for how quickly walls spawn
+    //public float distanceBetweenWalls = 2.5f;
+    public float wallSeparationFromScreenLimit = 1.25f;
 
-	private GameObject[] walls;					//collection of pooled walls
-	private int currentWall = 0;				//index of the current wall in the collection
+	private float wallMinX;		        //minimum x value of the wall position
+	private float wallMaxX;		        //maximum x value of the wall position
+
+	private GameObject[] walls;			//collection of pooled walls
+	private int currentWall = 0;		//index of the current wall in the collection
 
 	private Color currentColor = Color.white;
 
@@ -18,6 +22,14 @@ public class WallSpawner : MonoBehaviour {
 	{
 		//initialize the walls collection
 		walls = new GameObject[wallPoolSize];
+
+        //initialize the walls opening min and max x position depending on the screen
+        Camera mainCamera = Camera.main;
+        float screenMinX = mainCamera.ScreenToWorldPoint(new Vector3(0f, 0f, 0f)).x;
+        float screenMaxX = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, 0f, 0f)).x;
+        wallMinX = screenMinX + wallSeparationFromScreenLimit;
+        wallMaxX = screenMaxX - wallSeparationFromScreenLimit;
+
 		//starts our function in charge of spawning the walls in the playable area
 		StartCoroutine ("SpawnLoop");
 	}
@@ -60,7 +72,7 @@ public class WallSpawner : MonoBehaviour {
 			//increase the value of currentWall. If the new size is too big, set it back to zero
 			if (++currentWall >= wallPoolSize) currentWall = 0;
 			//leave this coroutine until the proper amount of time has passed
-			yield return new WaitForSeconds(spawnRate);
+            yield return new WaitForSeconds(Random.Range(minSpawnRate, maxSpawnRate));
 		}
 	}
 }
