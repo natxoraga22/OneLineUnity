@@ -368,10 +368,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallPrefab: {fileID: 1000011101893818, guid: 702ecc62fa4384d9d94ef840776a52fe, type: 2}
-  wallPoolSize: 5
-  minSpawnRate: 1
-  maxSpawnRate: 1.5
+  playerController: {fileID: 2122567981}
   wallSeparationFromScreenLimit: 1.25
+  distanceBetweenWallsOffset: 1
 --- !u!1 &601380333
 GameObject:
   m_ObjectHideFlags: 0

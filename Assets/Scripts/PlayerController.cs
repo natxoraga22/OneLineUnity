@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Start() 
 	{
+        Debug.Log("Start()");
 		rigidBody = GetComponent<Rigidbody2D> ();
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		trailRenderer = GetComponent<TrailRenderer> ();
@@ -41,6 +42,11 @@ public class PlayerController : MonoBehaviour {
 			rigidBody.velocity = new Vector2 (horizontalMovement * currentSpeed, currentSpeed);
 		}
 	}
+
+    public float GetCurrentSpeed() 
+    {
+        return currentSpeed > 0.001f ? currentSpeed : initialSpeed;
+    }
 
 	public void SetColor(Color color)
 	{
