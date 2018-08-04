@@ -8,19 +8,17 @@ public class GameController : MonoBehaviour {
 	public static GameController current;		//a reference to our game controller so we can access it statically
 
 	// Game components
-	public Text scoreText;
 	public Button playPauseButton;
 	public Camera mainCamera;
 	public PlayerController playerController;	
 	public WallSpawner wallSpawner;
+    public Text scoreText;
     public GameObject rightLimit;
     public GameObject leftLimit;
 
 	private Color currentElementsColor = Color.white;
 	private Color currentBackgroundColor = Color.black;
 
-	private int score = 0;						//the player's score
-	private static int highScore = 0;
 
 	void Awake()
 	{
@@ -32,22 +30,15 @@ public class GameController : MonoBehaviour {
 
     private void Start()
     {
+        //set score to 0
+        ScoreManager.instance.ResetScore();
+
         //position right and left limits depending on screen width
         float screenMinX = mainCamera.ScreenToWorldPoint(new Vector3(0f, 0f, 0f)).x;
         float screenMaxX = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, 0f, 0f)).x;
         leftLimit.transform.position = new Vector3(screenMinX - leftLimit.GetComponent<BoxCollider2D>().size.x / 2f, leftLimit.transform.position.y, leftLimit.transform.position.z);
         rightLimit.transform.position = new Vector3(screenMaxX + rightLimit.GetComponent<BoxCollider2D>().size.x / 2f, rightLimit.transform.position.y, rightLimit.transform.position.z);
     }
-
-    public int GetScore()
-	{
-		return score;
-	}
-
-	public int GetHighScore()
-	{
-		return highScore;
-	}
 
 	public void PlayerScored()
 	{
@@ -61,25 +52,26 @@ public class GameController : MonoBehaviour {
 			currentBackgroundColor = Color.black;
 		}
 		mainCamera.backgroundColor = currentBackgroundColor;
-		scoreText.color = currentElementsColor;
+        scoreText.color = currentElementsColor;
 		playPauseButton.image.color = currentElementsColor;
 		playerController.SetColor (currentElementsColor);
 		wallSpawner.SetColor (currentElementsColor);
 
 		// Increment the player's speed
-		playerController.IncrementSpeed ();
+		playerController.IncrementSpeed();
 
-		score++;
-		scoreText.text = "" + score;
+        // Increment the score
+        ScoreManager.instance.IncrementScore();
+        scoreText.text = "" + ScoreManager.instance.GetScore();
 	}
 
 	public void PlayerDied()
 	{
 		// Stop wall spawning
-		wallSpawner.StopSpawn ();
+		wallSpawner.StopSpawn();
 
-		// Update the high score
-		if (score > highScore) highScore = score;
+        // Update the high score
+        ScoreManager.instance.UpdateHighScore();
 
 		// Load GameOver scene
 		StartCoroutine(LoadSceneAfterDelay(2, 1.5f));
@@ -87,8 +79,8 @@ public class GameController : MonoBehaviour {
 
 	IEnumerator LoadSceneAfterDelay(int scene, float seconds)
 	{
-		yield return new WaitForSeconds (seconds);
-		SceneManager.LoadScene (scene);
+		yield return new WaitForSeconds(seconds);
+		SceneManager.LoadScene(scene);
 	}
 
 	public void PauseGame()

@@ -13,7 +13,6 @@ public class WallSpawner : MonoBehaviour {
 	private float wallMinX;		    //minimum x value of the wall position
 	private float wallMaxX;		    //maximum x value of the wall position
     private float nextWallXPosition;
-    private bool firstWall = true;
 
     // Wall pool
 	private GameObject[] walls;     //collection of pooled walls
