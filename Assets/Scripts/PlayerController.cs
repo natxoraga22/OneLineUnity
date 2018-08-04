@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour {
 
 	void Start() 
 	{
-        Debug.Log("Start()");
 		rigidBody = GetComponent<Rigidbody2D> ();
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		trailRenderer = GetComponent<TrailRenderer> ();

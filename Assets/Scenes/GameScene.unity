@@ -370,7 +370,7 @@ MonoBehaviour:
   wallPrefab: {fileID: 1000011101893818, guid: 702ecc62fa4384d9d94ef840776a52fe, type: 2}
   playerController: {fileID: 2122567981}
   wallSeparationFromScreenLimit: 1.25
-  distanceBetweenWallsOffset: 1
+  distanceBetweenWallsOffset: 2
 --- !u!1 &601380333
 GameObject:
   m_ObjectHideFlags: 0
