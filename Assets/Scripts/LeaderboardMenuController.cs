@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class LeaderboardMenuController : MonoBehaviour {
 
 	// Use this for initialization

@@ -37,14 +37,16 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate() 
 	{
 		if (!isDead && !stopped) {
-            /*
+            //touch input (mobile)
             if (Input.touches.Length > 0) {
-                Debug.Log(Input.GetTouch(0).position.x);
+                if (Input.GetTouch(0).position.x < Screen.width / 2f) rigidBody.velocity = new Vector2(-currentSpeed, currentSpeed);
+                else if (Input.GetTouch(0).position.x > Screen.width / 2f) rigidBody.velocity = new Vector2(currentSpeed, currentSpeed);
             }
-            */
-
-			float horizontalMovement = Input.GetAxisRaw ("Horizontal");
-			rigidBody.velocity = new Vector2 (horizontalMovement * currentSpeed, currentSpeed);
+            //arrow input (unity editor)
+            else {
+                float horizontalMovement = Input.GetAxisRaw("Horizontal");
+                rigidBody.velocity = new Vector2(horizontalMovement * currentSpeed, currentSpeed);
+            }
 		}
 	}
 
