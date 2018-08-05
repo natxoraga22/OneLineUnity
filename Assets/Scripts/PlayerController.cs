@@ -37,6 +37,12 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate() 
 	{
 		if (!isDead && !stopped) {
+            /*
+            if (Input.touches.Length > 0) {
+                Debug.Log(Input.GetTouch(0).position.x);
+            }
+            */
+
 			float horizontalMovement = Input.GetAxisRaw ("Horizontal");
 			rigidBody.velocity = new Vector2 (horizontalMovement * currentSpeed, currentSpeed);
 		}
