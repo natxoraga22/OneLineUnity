@@ -23,10 +23,12 @@ public class LeaderboardManager : MonoBehaviour {
 
     public void Authenticate() 
     {
-        Social.localUser.Authenticate((bool success) => {
-            if (success) Debug.Log("AUTHENTICATION SUCCESS");
-            else Debug.Log("AUTHENTICATION FAILED");
-        });
+        if (!Social.localUser.authenticated) {
+            Social.localUser.Authenticate((bool success) => {
+                if (success) Debug.Log("AUTHENTICATION SUCCESS");
+                else Debug.Log("AUTHENTICATION FAILED");
+            });
+        }
     }
 
     public void ShowLeaderboard() 
