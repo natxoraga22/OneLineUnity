@@ -26,8 +26,8 @@ public class LeaderboardManager : MonoBehaviour {
 
     public void Authenticate() 
     {
-        if (!Social.localUser.authenticated) {
-            Social.localUser.Authenticate((bool success) => {
+        if (!Social.Active.localUser.authenticated) {
+            Social.Active.localUser.Authenticate((bool success) => {
                 if (success) Debug.Log("Google Play Services - AUTHENTICATION SUCCESS");
                 else Debug.Log("Google Play Services - AUTHENTICATION FAILED");
             });
@@ -36,28 +36,26 @@ public class LeaderboardManager : MonoBehaviour {
 
     public void ShowLeaderboard(string leaderboardID) 
     {
-        if (Social.localUser.authenticated) {
+        if (Social.Active.localUser.authenticated) {
             PlayGamesPlatform.Instance.ShowLeaderboardUI(leaderboardID);
         }
     }
 
-    public int GetHighScore(string leaderboardID) 
+    public delegate void GetHighScoreCallback(int highScore);
+
+    public void GetHighScoreAsync(string leaderboardID, GetHighScoreCallback callback) 
     {
-        int highScore = 0;
-        if (Social.localUser.authenticated) {
-            Social.LoadScores(leaderboardID, (IScore[] scores) => {
-                foreach (IScore score in scores) {
-                    if (score.userID == Social.localUser.id) highScore = (int)score.value;
-                }
-            });
-        }
-        return highScore;
+        ILeaderboard leaderboard = PlayGamesPlatform.Instance.CreateLeaderboard();
+        leaderboard.id = leaderboardID;
+        leaderboard.LoadScores((bool success) => {
+            if (success) callback((int)leaderboard.localUserScore.value);
+        });
     }
 	
     public void PostScore(int score, string leaderboardID) 
     {
-        if (Social.localUser.authenticated) {
-            Social.ReportScore(score, leaderboardID, (bool success) => {
+        if (Social.Active.localUser.authenticated) {
+            Social.Active.ReportScore(score, leaderboardID, (bool success) => {
                 if (success) Debug.Log("Google Play Services - REPORT SCORE (" + score + ") SUCCESS");
                 else Debug.Log("Google Play Services - REPORT SCORE (" + score + ") FAILED");
             });
@@ -66,7 +64,7 @@ public class LeaderboardManager : MonoBehaviour {
 
     public void SignOut() 
     {
-        if (Social.localUser.authenticated) {
+        if (Social.Active.localUser.authenticated) {
             PlayGamesPlatform.Instance.SignOut();
         }
     }

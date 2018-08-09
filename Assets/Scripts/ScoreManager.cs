@@ -23,7 +23,7 @@ public class ScoreManager : MonoBehaviour {
 
     private void Start()
     {
-        highScore = LeaderboardManager.instance.GetHighScore(GPGSIds.leaderboard_leaderboard);
+        LeaderboardManager.instance.GetHighScoreAsync(GPGSIds.leaderboard_leaderboard, (int leaderboardScore) => highScore = leaderboardScore);
     }
 
     public int GetScore()
