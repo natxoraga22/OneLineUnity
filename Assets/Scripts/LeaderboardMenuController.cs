@@ -6,8 +6,9 @@ using UnityEngine;
 public class LeaderboardMenuController : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
-        LeaderboardManager.instance.ShowLeaderboard();
+	private void Start() 
+    {
+        LeaderboardManager.instance.ShowLeaderboard(GPGSIds.leaderboard_leaderboard);
 	}
 	
 }

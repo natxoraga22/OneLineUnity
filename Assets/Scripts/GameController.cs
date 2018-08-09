@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour {
 	private Color currentBackgroundColor = Color.black;
 
 
-	void Awake()
+	private void Awake()
 	{
 		//if we don't currently have a game control set this one to be it
 		if (current == null) current = this;

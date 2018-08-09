@@ -12,13 +12,18 @@ public class ScoreManager : MonoBehaviour {
     private bool newHighScore = false;
 
 
-    void Awake()
+    private void Awake()
     {
         //if we don't currently have a score manager set this one to be it and prevent destroying
         if (instance == null) instance = this;
         //if this score manager is not the current destroy this one because it is a duplicate
         else if (instance != this) Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        highScore = LeaderboardManager.instance.GetHighScore(GPGSIds.leaderboard_leaderboard);
     }
 
     public int GetScore()
@@ -51,6 +56,7 @@ public class ScoreManager : MonoBehaviour {
         if (score > highScore) {
             newHighScore = true;
             highScore = score;
+            LeaderboardManager.instance.PostScore(score, GPGSIds.leaderboard_leaderboard);
         }
         else newHighScore = false;
     }

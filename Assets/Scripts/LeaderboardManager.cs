@@ -10,7 +10,6 @@ public class LeaderboardManager : MonoBehaviour {
 
     private void Awake()
     {
-        Debug.Log("LeaderboardManager.Awake()");
         if (instance == null) {
             instance = this;
             PlayGamesPlatform.DebugLogEnabled = true;
@@ -20,35 +19,55 @@ public class LeaderboardManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject); 
     }
 
+    public void OnApplicationQuit()
+    {
+        SignOut();
+    }
+
     public void Authenticate() 
     {
-        Debug.Log("LeaderboardManager.Authenticate()");
         if (!Social.localUser.authenticated) {
-            Debug.Log("Not authenticated. Trying to");
             Social.localUser.Authenticate((bool success) => {
-                if (success) Debug.Log("AUTHENTICATION SUCCESS");
-                else Debug.Log("AUTHENTICATION FAILED");
+                if (success) Debug.Log("Google Play Services - AUTHENTICATION SUCCESS");
+                else Debug.Log("Google Play Services - AUTHENTICATION FAILED");
             });
-            /*PlayGamesPlatform.Instance.Authenticate((bool success) => {
-                if (success) Debug.Log("AUTHENTICATION SUCCESS");
-                else Debug.Log("AUTHENTICATION FAILED");
-            });*/
         }
     }
 
-    public void ShowLeaderboard() 
+    public void ShowLeaderboard(string leaderboardID) 
     {
-        Debug.Log("LeaderboardManager.ShowLeaderboard()");
-        Social.ShowLeaderboardUI();
+        if (Social.localUser.authenticated) {
+            PlayGamesPlatform.Instance.ShowLeaderboardUI(leaderboardID);
+        }
+    }
+
+    public int GetHighScore(string leaderboardID) 
+    {
+        int highScore = 0;
+        if (Social.localUser.authenticated) {
+            Social.LoadScores(leaderboardID, (IScore[] scores) => {
+                foreach (IScore score in scores) {
+                    if (score.userID == Social.localUser.id) highScore = (int)score.value;
+                }
+            });
+        }
+        return highScore;
     }
 	
-    public void PostScore(int score) 
+    public void PostScore(int score, string leaderboardID) 
     {
-        Debug.Log("LeaderboardManager.PostScore(" + score + ")");
         if (Social.localUser.authenticated) {
-            Social.ReportScore(score, GPGSIds.leaderboard_leaderboard, (bool success) => {
-                Debug.Log("REPORT SCORE " + score);
+            Social.ReportScore(score, leaderboardID, (bool success) => {
+                if (success) Debug.Log("Google Play Services - REPORT SCORE (" + score + ") SUCCESS");
+                else Debug.Log("Google Play Services - REPORT SCORE (" + score + ") FAILED");
             });
+        }
+    }
+
+    public void SignOut() 
+    {
+        if (Social.localUser.authenticated) {
+            PlayGamesPlatform.Instance.SignOut();
         }
     }
 
