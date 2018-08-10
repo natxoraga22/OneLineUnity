@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
+
 
 public class PlayerController : MonoBehaviour {
 
@@ -39,8 +41,10 @@ public class PlayerController : MonoBehaviour {
 		if (!isDead && !stopped) {
             //touch input (mobile)
             if (Input.touches.Length > 0) {
-                if (Input.GetTouch(0).position.x < Screen.width / 2f) rigidBody.velocity = new Vector2(-currentSpeed, currentSpeed);
-                else if (Input.GetTouch(0).position.x > Screen.width / 2f) rigidBody.velocity = new Vector2(currentSpeed, currentSpeed);
+                if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) {
+                    if (Input.GetTouch(0).position.x < Screen.width / 2f) rigidBody.velocity = new Vector2(-currentSpeed, currentSpeed);
+                    else if (Input.GetTouch(0).position.x > Screen.width / 2f) rigidBody.velocity = new Vector2(currentSpeed, currentSpeed);    
+                }
             }
             //arrow input (unity editor)
             else {
