@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour {
 	public PlayerController playerController;	
 	public WallSpawner wallSpawner;
     public Text scoreText;
+    public Image scoreTextBackground;
     public GameObject rightLimit;
     public GameObject leftLimit;
 
@@ -53,6 +54,7 @@ public class GameController : MonoBehaviour {
 		}
 		mainCamera.backgroundColor = currentBackgroundColor;
         scoreText.color = currentElementsColor;
+        scoreTextBackground.color = currentBackgroundColor;
         playPauseButton.SetColor(currentElementsColor);
 		playerController.SetColor (currentElementsColor);
 		wallSpawner.SetColor (currentElementsColor);
