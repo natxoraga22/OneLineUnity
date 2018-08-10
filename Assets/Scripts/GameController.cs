@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour {
 	public static GameController current;		//a reference to our game controller so we can access it statically
 
 	// Game components
-	public Button playPauseButton;
+    public PauseGameButton playPauseButton;
 	public Camera mainCamera;
 	public PlayerController playerController;	
 	public WallSpawner wallSpawner;
@@ -53,7 +53,7 @@ public class GameController : MonoBehaviour {
 		}
 		mainCamera.backgroundColor = currentBackgroundColor;
         scoreText.color = currentElementsColor;
-		playPauseButton.image.color = currentElementsColor;
+        playPauseButton.SetColor(currentElementsColor);
 		playerController.SetColor (currentElementsColor);
 		wallSpawner.SetColor (currentElementsColor);
 

@@ -460,7 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c58613bb84942ea9f41d506b3041ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playPauseButton: {fileID: 1155906765}
+  playPauseButton: {fileID: 1155906764}
   mainCamera: {fileID: 34513001}
   playerController: {fileID: 2122567981}
   wallSpawner: {fileID: 569715906}
@@ -632,7 +632,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 86f607593cb424a0784df5c368216d92, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6b5b85c741996447db753a3424525fb9, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -658,8 +658,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e1018bde0e44398a7afd20bec3582c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playSprite: {fileID: 21300000, guid: a9f8ad62d73434ebbba23a968dff45f9, type: 3}
-  pauseSprite: {fileID: 21300000, guid: 86f607593cb424a0784df5c368216d92, type: 3}
+  playWhiteSprite: {fileID: 21300000, guid: 3a2ed56d2dc0f4d93b35f3473325921b, type: 3}
+  playBlackSprite: {fileID: 21300000, guid: 18e5f00588cb248ddb3a8414f9df5535, type: 3}
+  pauseWhiteSprite: {fileID: 21300000, guid: 6b5b85c741996447db753a3424525fb9, type: 3}
+  pauseBlackSprite: {fileID: 21300000, guid: cbbca17f31d1d4c65b813aece92579ba, type: 3}
 --- !u!114 &1155906765
 MonoBehaviour:
   m_ObjectHideFlags: 0
