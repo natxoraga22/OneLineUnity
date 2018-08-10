@@ -38,21 +38,29 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate() 
 	{
-		if (!isDead && !stopped) {
-            //touch input (mobile)
-            if (Input.touches.Length > 0) {
-                if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) {
-                    if (Input.GetTouch(0).position.x < Screen.width / 2f) rigidBody.velocity = new Vector2(-currentSpeed, currentSpeed);
-                    else if (Input.GetTouch(0).position.x > Screen.width / 2f) rigidBody.velocity = new Vector2(currentSpeed, currentSpeed);    
-                }
-            }
-            //arrow input (unity editor)
-            else {
-                float horizontalMovement = Input.GetAxisRaw("Horizontal");
-                rigidBody.velocity = new Vector2(horizontalMovement * currentSpeed, currentSpeed);
-            }
-		}
+        // Used only to test on unity with arrow keys
+        /*
+        if (!isDead && !stopped) {
+            float horizontalMovement = Input.GetAxisRaw("Horizontal");
+            rigidBody.velocity = new Vector2(horizontalMovement * currentSpeed, currentSpeed);
+        }
+        */
 	}
+
+    public void MoveLeft() 
+    {
+        if (!isDead && !stopped) rigidBody.velocity = new Vector2(-currentSpeed, currentSpeed);
+    }
+
+    public void MoveRight() 
+    {
+        if (!isDead && !stopped) rigidBody.velocity = new Vector2(currentSpeed, currentSpeed);
+    } 
+
+    public void MoveUp() 
+    {
+        if (!isDead && !stopped) rigidBody.velocity = new Vector2(0f, currentSpeed);
+    }
 
     public float GetCurrentSpeed() 
     {
