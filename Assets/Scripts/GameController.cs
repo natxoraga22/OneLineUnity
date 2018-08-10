@@ -53,8 +53,8 @@ public class GameController : MonoBehaviour {
 			currentBackgroundColor = Color.black;
 		}
 		mainCamera.backgroundColor = currentBackgroundColor;
-        scoreText.color = currentElementsColor;
-        scoreTextBackground.color = currentBackgroundColor;
+        scoreText.color = currentBackgroundColor;
+        scoreTextBackground.color = currentElementsColor;
         playPauseButton.SetColor(currentElementsColor);
 		playerController.SetColor (currentElementsColor);
 		wallSpawner.SetColor (currentElementsColor);
