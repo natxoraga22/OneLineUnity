@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour {
 	private bool isDead = false;
 	private bool stopped = false;
 
+
 	void Start() 
 	{
 		rigidBody = GetComponent<Rigidbody2D> ();
