@@ -26,7 +26,10 @@ public class GameOverController : MonoBehaviour {
 
         //show ad if needed
         gameOverCounter++;
-        if (gameOverCounter % gameOversBetweenAds == 0 && Advertisement.IsReady()) Advertisement.Show();
+        if (gameOverCounter >= gameOversBetweenAds && Advertisement.IsReady()) {
+            gameOverCounter = 0;
+            Advertisement.Show();
+        }
 	}
 
 }

@@ -486,7 +486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481fc1db9627b42b6b99aa080ebd9b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointScoredClip: {fileID: 8300000, guid: f45f3bd9d26714472b7b4348041ec7ae, type: 3}
+  pointScoredClip: {fileID: 8300000, guid: 3ab0abbb30db34b15aa6b717c371cfe0, type: 3}
   playerDiedClip: {fileID: 8300000, guid: a8cee10ff346f497abc03fbaf3e64ef2, type: 3}
 --- !u!82 &387036054
 AudioSource:
