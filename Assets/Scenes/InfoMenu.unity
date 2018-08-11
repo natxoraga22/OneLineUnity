@@ -469,7 +469,7 @@ RectTransform:
   m_Father: {fileID: 559974668}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.3}
+  m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -25}
   m_SizeDelta: {x: -100, y: -50}
@@ -507,6 +507,13 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Game developed by Natxo Raga
+
+
+    Music by Backgroundloop on DL Sounds
+
+
+    Icons by Font Awesome
+
 
 
     If you have encountered any bug, have some suggestions or simply want to contact
