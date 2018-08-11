@@ -22,6 +22,7 @@ public class PauseGameButton : MonoBehaviour {
 	{
 		gamePaused = !gamePaused;
         UpdateSprite();
+        AudioManager.instance.SetMute(gamePaused);
 		if (gamePaused) GameController.current.PauseGame();
 		else GameController.current.ResumeGame();
 	}

@@ -28,4 +28,10 @@ public class AudioManager : MonoBehaviour {
         gameObject.GetComponent<AudioSource>().mute = muted;
     }
 
+    public void SetMute(bool newMuted) 
+    {
+        muted = newMuted;
+        gameObject.GetComponent<AudioSource>().mute = muted;
+    }
+
 }
