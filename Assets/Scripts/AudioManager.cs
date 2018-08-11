@@ -8,8 +8,10 @@ public class AudioManager : MonoBehaviour {
     public static AudioManager instance = null;
 
     public AudioClip pointScoredClip;
+    public AudioClip playerDiedClip;
 
-    private AudioSource audioSource;
+    private AudioSource backgroundAudioSource;
+    private AudioSource soundEffectsAudioSource;
     private bool muted = false;
 
 
@@ -22,7 +24,9 @@ public class AudioManager : MonoBehaviour {
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        backgroundAudioSource = audioSources[0];
+        soundEffectsAudioSource = audioSources[1];
     }
 
     public bool IsMuted() 
@@ -33,18 +37,31 @@ public class AudioManager : MonoBehaviour {
     public void ToggleMute() 
     {
         muted = !muted;
-        audioSource.mute = muted;
+        backgroundAudioSource.mute = muted;
+        soundEffectsAudioSource.mute = muted;
     }
 
     public void SetMute(bool newMuted) 
     {
         muted = newMuted;
-        audioSource.mute = muted;
+        backgroundAudioSource.mute = muted;
+        soundEffectsAudioSource.mute = muted;
     }
 
     public void PlayPointScoredSound() 
     {
-        audioSource.PlayOneShot(pointScoredClip);
+        soundEffectsAudioSource.Stop();
+        soundEffectsAudioSource.clip = pointScoredClip;
+        soundEffectsAudioSource.volume = 0.5f;
+        soundEffectsAudioSource.Play();
+    }
+
+    public void PlayPlayerDiedSound() 
+    {
+        soundEffectsAudioSource.Stop();
+        soundEffectsAudioSource.clip = playerDiedClip;
+        soundEffectsAudioSource.volume = 1.0f;
+        soundEffectsAudioSource.Play();
     }
 
 }

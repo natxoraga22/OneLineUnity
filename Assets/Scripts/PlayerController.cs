@@ -81,10 +81,12 @@ public class PlayerController : MonoBehaviour {
 		currentSpeed += speedIncrement;
 	}
 
-    void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Wall") {
             isDead = true;
+
+            AudioManager.instance.PlayPlayerDiedSound();
 
             // Stop the player
             rigidBody.velocity = new Vector2(0f, 0f);
@@ -100,4 +102,12 @@ public class PlayerController : MonoBehaviour {
             GameController.current.PlayerDied();
         }
 	}
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "SoundTrigger") {
+            AudioManager.instance.PlayPointScoredSound();
+        }
+    }
+
 }

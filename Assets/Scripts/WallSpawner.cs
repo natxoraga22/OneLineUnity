@@ -46,7 +46,9 @@ public class WallSpawner : MonoBehaviour {
 		foreach (GameObject wall in walls) {
 			if (wall != null) {
 				foreach (Transform wallPart in wall.transform) {
-					wallPart.GetComponent<SpriteRenderer> ().color = currentColor;
+                    if (wallPart.tag == "Wall") {
+                        wallPart.GetComponent<SpriteRenderer>().color = currentColor;
+                    }
 				}
 			}
 		}
@@ -67,7 +69,9 @@ public class WallSpawner : MonoBehaviour {
 			if (walls[currentWall] == null) {
 				walls[currentWall] = (GameObject)Instantiate(wallPrefab);
 				foreach (Transform wallPart in walls[currentWall].transform) {
-					wallPart.GetComponent<SpriteRenderer>().color = currentColor;
+                    if (wallPart.tag == "Wall") {
+                        wallPart.GetComponent<SpriteRenderer>().color = currentColor;
+                    }
 				}
 			}
 
