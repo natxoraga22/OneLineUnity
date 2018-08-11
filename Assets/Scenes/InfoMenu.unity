@@ -495,7 +495,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0eceb7f86ed2e4130a112897964b6f79, type: 3}
-    m_FontSize: 50
+    m_FontSize: 43
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
@@ -510,6 +510,9 @@ MonoBehaviour:
 
 
     Music by Backgroundloop on DL Sounds
+
+
+    Sound effects by jalastram on OpenGameArt
 
 
     Icons by Font Awesome
