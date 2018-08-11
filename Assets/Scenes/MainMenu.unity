@@ -181,7 +181,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muteButton: {fileID: 657556280}
-  audioManager: {fileID: 387036053}
   audioOnSprite: {fileID: 21300000, guid: 9a37196e23d8f4cecb7c5f5fe0a4b785, type: 3}
   audioOffSprite: {fileID: 21300000, guid: 9eb8bddf896fb4a7f88f80bdabcf4a16, type: 3}
 --- !u!4 &172921985
@@ -896,11 +895,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0eceb7f86ed2e4130a112897964b6f79, type: 3}
-    m_FontSize: 136
+    m_FontSize: 145
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
-    m_MaxSize: 136
+    m_MaxSize: 145
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
