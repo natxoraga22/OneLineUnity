@@ -485,6 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481fc1db9627b42b6b99aa080ebd9b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointScoredClip: {fileID: 8300000, guid: fe79815fc50294bec8772bb754956dd0, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,9 @@ public class AudioManager : MonoBehaviour {
 
     public static AudioManager instance = null;
 
+    public AudioClip pointScoredClip;
+
+    private AudioSource audioSource;
     private bool muted = false;
 
 
@@ -17,6 +20,11 @@ public class AudioManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public bool IsMuted() 
     {
         return muted;
@@ -25,13 +33,18 @@ public class AudioManager : MonoBehaviour {
     public void ToggleMute() 
     {
         muted = !muted;
-        gameObject.GetComponent<AudioSource>().mute = muted;
+        audioSource.mute = muted;
     }
 
     public void SetMute(bool newMuted) 
     {
         muted = newMuted;
-        gameObject.GetComponent<AudioSource>().mute = muted;
+        audioSource.mute = muted;
+    }
+
+    public void PlayPointScoredSound() 
+    {
+        audioSource.PlayOneShot(pointScoredClip);
     }
 
 }

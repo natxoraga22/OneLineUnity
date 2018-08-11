@@ -43,6 +43,9 @@ public class GameController : MonoBehaviour {
 
 	public void PlayerScored()
 	{
+        // Play corresponding sound
+        AudioManager.instance.PlayPointScoredSound();
+
 		// Each time the player scores, change background, player and walls color
 		if (currentElementsColor == Color.white) {
 			currentElementsColor = Color.black;

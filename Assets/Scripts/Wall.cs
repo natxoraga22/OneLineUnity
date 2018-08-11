@@ -8,4 +8,5 @@ public class Wall : MonoBehaviour {
 		//if the player hits the trigger collider in between the walls then increment the score
 		GameController.current.PlayerScored();
 	}
+
 }
