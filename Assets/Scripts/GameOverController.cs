@@ -8,10 +8,9 @@ public class GameOverController : MonoBehaviour {
     public AdsManager adsManager;
 	public Text scoreText;
 	public Text highScoreText;
-    public Text newHighScoreText;
 
     public int gameOversBetweenAds = 5;
-    private static int gameOverCounter = 0;
+    private static int gameOversSinceAd = 0;
 
 
 	void Start () 
@@ -20,14 +19,13 @@ public class GameOverController : MonoBehaviour {
         if (ScoreManager.instance) {
             scoreText.text = "" + ScoreManager.instance.GetScore();
             highScoreText.text = "" + ScoreManager.instance.GetHighScore();
-            Color newHighTextScoreColor = new Color(1f, 1f, 1f, ScoreManager.instance.IsNewHighScore() ? 1f : 0f);
-            newHighScoreText.color = newHighTextScoreColor;
+            highScoreText.gameObject.GetComponentInParent<Animator>().enabled = ScoreManager.instance.IsNewHighScore();
         }
 
         //show ad if needed
-        gameOverCounter++;
-        if (gameOverCounter >= gameOversBetweenAds && Advertisement.IsReady()) {
-            gameOverCounter = 0;
+        gameOversSinceAd++;
+        if (gameOversSinceAd >= gameOversBetweenAds && Advertisement.IsReady()) {
+            gameOversSinceAd = 0;
             Advertisement.Show();
         }
 	}

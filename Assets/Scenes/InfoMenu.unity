@@ -322,7 +322,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.13}
   m_AnchorMax: {x: 0.5, y: 0.13}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 450, y: 100}
+  m_SizeDelta: {x: 380, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1017261419
 MonoBehaviour:
@@ -424,7 +424,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ca8e49b37a21141f481a5fa8b80e90eb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 82690d689011d4352ba4dcb7501d9ff3, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -640,7 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -649,10 +649,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0eceb7f86ed2e4130a112897964b6f79, type: 3}
-    m_FontSize: 60
+    m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 6
+    m_MinSize: 5
     m_MaxSize: 72
     m_Alignment: 4
     m_AlignByGeometry: 0
