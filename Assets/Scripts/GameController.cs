@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
     public Image scoreTextBackground;
     public GameObject rightLimit;
     public GameObject leftLimit;
+    public Canvas tutorial;
 
 	private Color currentElementsColor = Color.white;
 	private Color currentBackgroundColor = Color.black;
@@ -39,6 +40,20 @@ public class GameController : MonoBehaviour {
         float screenMaxX = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, 0f, 0f)).x;
         leftLimit.transform.position = new Vector3(screenMinX - leftLimit.GetComponent<BoxCollider2D>().size.x / 2f, leftLimit.transform.position.y, leftLimit.transform.position.z);
         rightLimit.transform.position = new Vector3(screenMaxX + rightLimit.GetComponent<BoxCollider2D>().size.x / 2f, rightLimit.transform.position.y, rightLimit.transform.position.z);
+
+        //show canvas if first time playing
+        if (!PlayerPrefs.HasKey("tutorialCompleted")) {
+            PauseGame();
+            tutorial.gameObject.SetActive(true);
+        }
+    }
+
+    public void TutorialCompleted()
+    {
+        PlayerPrefs.SetString("tutorialCompleted", "true");
+        PlayerPrefs.Save();
+        tutorial.gameObject.SetActive(false);
+        ResumeGame();
     }
 
 	public void PlayerScored()
@@ -79,12 +94,6 @@ public class GameController : MonoBehaviour {
 		StartCoroutine(LoadSceneAfterDelay(2, 1.5f));
 	}
 
-	IEnumerator LoadSceneAfterDelay(int scene, float seconds)
-	{
-		yield return new WaitForSeconds(seconds);
-		SceneManager.LoadScene(scene);
-	}
-
 	public void PauseGame()
 	{
         AudioManager.instance.PauseBackgroundMusic();
@@ -96,5 +105,11 @@ public class GameController : MonoBehaviour {
         AudioManager.instance.ResumeBackgroundMusic();
 		Time.timeScale = 1f;
 	}
+
+    IEnumerator LoadSceneAfterDelay(int scene, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene(scene);
+    }
 
 }
