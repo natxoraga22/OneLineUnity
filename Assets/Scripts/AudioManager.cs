@@ -34,18 +34,21 @@ public class AudioManager : MonoBehaviour {
         return muted;
     }
 
-    public void ToggleMute() 
-    {
-        muted = !muted;
-        backgroundAudioSource.mute = muted;
-        soundEffectsAudioSource.mute = muted;
-    }
-
     public void SetMute(bool newMuted) 
     {
         muted = newMuted;
         backgroundAudioSource.mute = muted;
         soundEffectsAudioSource.mute = muted;
+    }
+
+    public void PauseBackgroundMusic()
+    {
+        backgroundAudioSource.Pause();
+    }
+
+    public void ResumeBackgroundMusic()
+    {
+        backgroundAudioSource.UnPause();
     }
 
     public void PlayPointScoredSound() 

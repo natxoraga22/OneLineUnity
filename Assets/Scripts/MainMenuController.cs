@@ -27,7 +27,7 @@ public class MainMenuController : MonoBehaviour {
 
     public void ToggleMute() 
     {
-        AudioManager.instance.ToggleMute();
+        AudioManager.instance.SetMute(!AudioManager.instance.IsMuted());
         if (AudioManager.instance.IsMuted()) muteButton.image.sprite = audioOffSprite;
         else muteButton.image.sprite = audioOnSprite;
     }

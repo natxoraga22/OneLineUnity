@@ -56,9 +56,10 @@ public class ScoreManager : MonoBehaviour {
         if (score > highScore) {
             newHighScore = true;
             highScore = score;
-            LeaderboardManager.instance.PostScore(score, GPGSIds.leaderboard_leaderboard);
         }
         else newHighScore = false;
+
+        LeaderboardManager.instance.PostScore(score, GPGSIds.leaderboard_leaderboard);
 
         // Try again to get high score from leaderboard (just in case it didn't work before)
         LeaderboardManager.instance.GetHighScoreAsync(GPGSIds.leaderboard_leaderboard, (int leaderboardScore) => highScore = leaderboardScore);

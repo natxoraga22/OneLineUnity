@@ -87,11 +87,13 @@ public class GameController : MonoBehaviour {
 
 	public void PauseGame()
 	{
+        AudioManager.instance.PauseBackgroundMusic();
 		Time.timeScale = 0f;
 	}
 
 	public void ResumeGame()
 	{
+        AudioManager.instance.ResumeBackgroundMusic();
 		Time.timeScale = 1f;
 	}
 
