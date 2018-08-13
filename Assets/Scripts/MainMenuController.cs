@@ -16,6 +16,7 @@ public class MainMenuController : MonoBehaviour {
     {
         LeaderboardManager.instance.Authenticate();
 
+        // Audio button
         if (AudioManager.instance.IsMuted()) muteButton.image.sprite = audioOffSprite;
         else muteButton.image.sprite = audioOnSprite;
 	}

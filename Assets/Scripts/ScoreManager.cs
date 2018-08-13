@@ -23,7 +23,9 @@ public class ScoreManager : MonoBehaviour {
 
     private void Start()
     {
-        LeaderboardManager.instance.GetHighScoreAsync(GPGSIds.leaderboard_leaderboard, (int leaderboardScore) => highScore = leaderboardScore);
+        LeaderboardManager.instance.GetHighScoreAsync(GPGSIds.leaderboard_leaderboard, (int leaderboardScore) => {
+            if (leaderboardScore > highScore) highScore = leaderboardScore;
+        });
     }
 
     public int GetScore()
@@ -62,7 +64,9 @@ public class ScoreManager : MonoBehaviour {
         LeaderboardManager.instance.PostScore(score, GPGSIds.leaderboard_leaderboard);
 
         // Try again to get high score from leaderboard (just in case it didn't work before)
-        LeaderboardManager.instance.GetHighScoreAsync(GPGSIds.leaderboard_leaderboard, (int leaderboardScore) => highScore = leaderboardScore);
+        LeaderboardManager.instance.GetHighScoreAsync(GPGSIds.leaderboard_leaderboard, (int leaderboardScore) => {
+            if (leaderboardScore > highScore) highScore = leaderboardScore;
+        });
     }
 
 }

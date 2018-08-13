@@ -16,12 +16,7 @@ public class LeaderboardManager : MonoBehaviour {
             PlayGamesPlatform.Activate();
         }
         else if (instance != this) Destroy(gameObject);
-        DontDestroyOnLoad(gameObject); 
-    }
-
-    public void OnApplicationQuit()
-    {
-        SignOut();
+        DontDestroyOnLoad(gameObject);
     }
 
     public void Authenticate() 
@@ -47,6 +42,7 @@ public class LeaderboardManager : MonoBehaviour {
     {
         ILeaderboard leaderboard = PlayGamesPlatform.Instance.CreateLeaderboard();
         leaderboard.id = leaderboardID;
+        leaderboard.timeScope = TimeScope.AllTime;
         leaderboard.LoadScores((bool success) => {
             if (success) callback((int)leaderboard.localUserScore.value);
         });
@@ -60,6 +56,11 @@ public class LeaderboardManager : MonoBehaviour {
                 else Debug.Log("Google Play Services - REPORT SCORE (" + score + ") FAILED");
             });
         }
+    }
+
+    public void OnApplicationQuit()
+    {
+        SignOut();
     }
 
     public void SignOut() 

@@ -1126,9 +1126,9 @@ MonoBehaviour:
   blackSprite: {fileID: 21300000, guid: f7f627b403591469a810e8ec14600fe5, type: 3}
   redWhiteSprite: {fileID: 21300000, guid: d6345eda4e9344b458b1bd75b70df9aa, type: 3}
   redBlackSprite: {fileID: 21300000, guid: 5c35e804d5a1e43f58e0cd7ce5e8fb1d, type: 3}
-  initialSpeed: 3.5
+  initialSpeed: 3
   speedIncrement: 0.05
-  maxSpeed: 6.5
+  maxSpeed: 6
 --- !u!96 &2122567982
 TrailRenderer:
   serializedVersion: 2
